@@ -12,11 +12,14 @@ load_dotenv()
 
 client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY"),
+    base_url=os.getenv("OPENAI_BASE_URL"),
 )
 
+
 def create_image(prompt, output_image):
+    model = os.getenv("OPENAI_MODEL", "dall-e-3")
     response = client.images.generate(
-        model="dall-e-3",
+        model=model,
         prompt=prompt,
         size="1024x1024",
         response_format="b64_json",
@@ -26,6 +29,7 @@ def create_image(prompt, output_image):
 
     with open(output_image, "wb") as f:
         f.write(image)
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
