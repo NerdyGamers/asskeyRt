@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <title>Asskey Web</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Upload Image for ASCII Art</h1>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <label>Image:
+      <input type="file" name="image" accept="image/*" required>
+    </label><br>
+    <label>Width:
+      <input type="number" name="width" value="160" min="20" max="400">
+    </label><br>
+    <label>Character Set:
+      <select name="charset">
+        <option value="standard">Standard</option>
+        <option value="blocks">Blocks</option>
+        <option value="dots">Dots</option>
+        <option value="dense">Dense</option>
+        <option value="binary">Binary</option>
+      </select>
+    </label><br>
+    <label>Custom Charset:
+      <input type="text" name="custom_charset" placeholder="Override preset">
+    </label><br>
+    <input type="submit" value="Convert">
+  </form>
+
+  <h1>Generate ASCII Art from Prompt</h1>
+  <form action="/prompt" method="post">
+    <label>Prompt:
+      <input type="text" name="prompt" placeholder="Enter prompt" required>
+    </label><br>
+    <label>Width:
+      <input type="number" name="width" value="160" min="20" max="400">
+    </label><br>
+    <label>Character Set:
+      <select name="charset">
+        <option value="standard">Standard</option>
+        <option value="blocks">Blocks</option>
+        <option value="dots">Dots</option>
+        <option value="dense">Dense</option>
+        <option value="binary">Binary</option>
+      </select>
+    </label><br>
+    <label>Custom Charset:
+      <input type="text" name="custom_charset" placeholder="Override preset">
+    </label><br>
+    <input type="submit" value="Generate">
+  </form>
+</body>
+</html>
